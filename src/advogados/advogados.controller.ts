@@ -1,0 +1,33 @@
+import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { AdvogadosService } from './advogados.service';
+import { Advogado } from './advogados.entity';
+
+@Controller('advogados')
+export class AdvogadosController {
+  constructor(private readonly advogadosService: AdvogadosService) {}
+
+  @Get()
+  findAll() {
+    return this.advogadosService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: number) {
+    return this.advogadosService.findOne(id);
+  }
+
+  @Post()
+  create(@Body() user: Advogado) {
+    return this.advogadosService.create(user);
+  }
+
+  @Put(':id')
+  update(@Param('id') id: number, @Body() user: Advogado) {
+    return this.advogadosService.update(id, user);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: number) {
+    return this.advogadosService.remove(id);
+  }
+}
