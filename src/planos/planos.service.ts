@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Plano } from './planos.entity';
 
-
 @Injectable()
 export class PlanosService {
   constructor(

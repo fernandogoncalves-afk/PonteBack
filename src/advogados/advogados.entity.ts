@@ -1,45 +1,45 @@
-import { 
-  Entity, 
-  PrimaryGeneratedColumn, 
-  Column, 
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
   CreateDateColumn,
   ManyToOne,
-  JoinColumn
+  JoinColumn,
 } from 'typeorm';
 import { Plano } from '../planos/planos.entity'; // Certifique-se de que o caminho está correto
 
 @Entity('adv')
 export class Advogado {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column({ type: 'varchar', length: 255 })
-  nome: string;
+  nome!: string;
 
   @Column({ type: 'varchar', length: 255 })
-  email: string;
+  email!: string;
 
   @Column({ type: 'varchar', length: 100 })
-  especializacao: string;
+  especializacao?: string;
 
   @Column({ type: 'varchar', length: 20 })
-  oab: string;
+  oab?: string;
 
   @CreateDateColumn({ name: 'data_cadastro' })
-  data_cadastro: Date;
+  data_cadastro?: Date;
 
   @Column({
     type: 'enum',
     enum: ['ativo', 'pendente', 'cancelado'],
-    default: 'ativo'
+    default: 'ativo',
   })
-  assinatura: string;
+  assinatura?: string;
 
   @Column({ default: false })
-  soft_delete: boolean;
+  soft_delete?: boolean;
 
   // Relacionamento: Vários advogados pertencem a um plano
   @ManyToOne(() => Plano)
   @JoinColumn({ name: 'plano_id' }) // Mapeia a FK plano_id do seu SQL
-  plano: Plano;
+  plano?: Plano;
 }

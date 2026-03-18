@@ -1,11 +1,21 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Delete,
+  Body,
+  Param,
+} from '@nestjs/common';
 //import { AdvogadosService } from '../advogados/advogados.service';
-import { ClienteAdvogado } from '../cliente_advogado/cliente_advogado.entity'
+import { ClienteAdvogado } from '../cliente_advogado/cliente_advogado.entity';
 import { ClienteAdvogadoService } from './cliente_advogado.service';
 
 @Controller('clienteadvogado')
 export class ClienteAdvogadoController {
-  constructor(private readonly ClienteAdvogadoService: ClienteAdvogadoService) {}
+  constructor(
+    private readonly ClienteAdvogadoService: ClienteAdvogadoService,
+  ) {}
 
   @Get()
   findAll() {
